@@ -143,7 +143,10 @@ PRODUCT_PACKAGES += \
     libexif.vendor \
     libutilscallstack.vendor \
     libyuv.vendor \
-    libprocessgroup_shim
+    libprocessgroup_shim \
+    libcamerahdr_shim \
+    libcameraflare_shim \
+    libcameraplugin_shim
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.concurrent.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.concurrent.xml \
