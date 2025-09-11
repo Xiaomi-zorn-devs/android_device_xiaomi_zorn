@@ -40,6 +40,7 @@ lib_fixups: lib_fixups_user_type = {
         'vendor.qti.ImsRtpService-V1-ndk'
     ): lib_fixup_vendor_suffix,
     (
+        'android.hardware.graphics.composer3-V1-ndk',
         'android.hardware.graphics.allocator-V1-ndk',
         'android.hardware.graphics.composer3-V2-ndk',
         'audio.primary.pineapple',
@@ -55,6 +56,40 @@ lib_fixups: lib_fixups_user_type = {
 }
 
 blob_fixups: blob_fixups_user_type = {
+    (
+        'odm/etc/camera/enhance_motiontuning.xml',
+        'odm/etc/camera/motiontuning.xml'
+    ): blob_fixup()
+        .regex_replace('xml=version', 'xml version'),
+    (
+        'odm/lib64/libMiPhotoFilter.so',
+        'odm/lib64/libwa_widelens_undistort.so',
+    ): blob_fixup()
+    .clear_symbol_version('AHardwareBuffer_allocate')
+    .clear_symbol_version('AHardwareBuffer_describe')
+    .clear_symbol_version('AHardwareBuffer_isSupported')
+    .clear_symbol_version('AHardwareBuffer_lock')
+    .clear_symbol_version('AHardwareBuffer_lockPlanes')
+    .clear_symbol_version('AHardwareBuffer_release')
+    .clear_symbol_version('AHardwareBuffer_unlock'),
+    (
+        'odm/lib64/libcamxcommonutils.so',
+        'vendor/lib64/libcameraopt.so',
+        'odm/lib64/hw/camera.qcom.so'
+    ): blob_fixup()
+        .add_needed('libprocessgroup_shim.so'),
+    (
+        'odm/lib64/camera/plugins/com.xiaomi.plugin.jpegrAggr.so'
+    ): blob_fixup()
+        .add_needed('libcamerahdr_shim.so'),
+    (
+        'odm/lib64/com.qti.qseeaon.so'
+    ): blob_fixup()
+        .add_needed('libcameraflare_shim.so'),
+    (
+        'odm/lib64/camera/plugins/com.xiaomi.plugin.gainmap.so'
+    ): blob_fixup()
+        .add_needed('libcameraplugin_shim.so'),
     (
         'vendor/bin/hw/vendor.dolby.media.c2@1.0-service',
     ): blob_fixup()
