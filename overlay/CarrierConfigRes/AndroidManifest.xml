@@ -5,10 +5,10 @@
 -->
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.android.carrierconfig.overlay.houji">
+    package="com.android.carrierconfigres.overlay.houji">
 
     <overlay
         android:isStatic="true"
         android:priority="800"
-        android:targetPackage="com.android.carrierconfig"/>
+        android:targetPackage="com.android.carrierconfigres"/>
 </manifest>

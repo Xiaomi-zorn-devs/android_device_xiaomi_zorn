@@ -7,6 +7,7 @@
 DEVICE_PATH := device/xiaomi/zorn
 KERNEL_PATH := $(DEVICE_PATH)-kernel
 
+LOCAL_ALLOW_UNDEFINED_SYMBOLS := true
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 TARGET_GRALLOC_HANDLE_HAS_UBWCP_FORMAT := true
@@ -202,8 +203,7 @@ TARGET_QTI_VIBRATOR_USE_EFFECT_STREAM := true
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
     $(DEVICE_PATH)/configs/vintf/compatibility_matrix.device.xml \
     $(DEVICE_PATH)/configs/vintf/compatibility_matrix.xiaomi.xml \
-    hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml \
-    vendor/lineage/config/device_framework_matrix.xml
+    hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml 
 
 DEVICE_FRAMEWORK_MANIFEST_FILE += \
     $(DEVICE_PATH)/configs/vintf/framework_manifest.xml

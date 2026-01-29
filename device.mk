@@ -173,6 +173,7 @@ PRODUCT_PACKAGES += \
     libyuv.vendor \
     libprocessgroup_shim \
     libcamerahdr_shim \
+    libaudioclient_shim \
     libcameraflare_shim \
     libcameraplugin_shim
 
@@ -220,8 +221,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml
 
 # Device-specific settings
-PRODUCT_PACKAGES += \
-    XiaomiParts
+#PRODUCT_PACKAGES += \
+#    XiaomiParts
 
 # Display
 PRODUCT_PACKAGES += \
@@ -257,9 +258,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.vulkan.deqp.level-2023-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml
 
 # Health
-PRODUCT_PACKAGES += \
-    android.hardware.health-service.xiaomi \
-    android.hardware.health-service.xiaomi_recovery
+#PRODUCT_PACKAGES += \
+#    android.hardware.health-service.xiaomi \
+#    android.hardware.health-service.xiaomi_recovery
 
 # Init
 $(call soong_config_set,libinit,vendor_init_lib,//$(DEVICE_PATH):libinit_xiaomi_8650)
@@ -293,7 +294,7 @@ PRODUCT_VENDOR_LINKER_CONFIG_FRAGMENTS += \
 $(call soong_config_set,lineage_health,charging_control_charging_disabled,1)
 $(call soong_config_set,lineage_health,charging_control_charging_enabled,0)
 $(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/qcom-battery/night_charging)
-$(call soong_config_set,lineage_health,charging_control_supports_bypass,false)
+$(call soong_config_set_bool,lineage_health,charging_control_supports_bypass,false)
 
 PRODUCT_PACKAGES += \
     vendor.lineage.health-service.default
@@ -331,7 +332,7 @@ PRODUCT_COPY_FILES += \
 # Overlays
 PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_PACKAGES += \
-    CarrierConfig \
+    CarrierConfigRes \
     FrameworksResXiaomi \
     FrameworksResZorn \
     SystemUIResZorn \
